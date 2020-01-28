@@ -1,5 +1,7 @@
 const path = require('path'),
     miniCssExtractPlugin = require('mini-css-extract-plugin'),
+    dotenv = require('dotenv'),
+    webpack = require('webpack'),
     distDir= path.resolve(__dirname, 'dist'),
     srcDir = path.resolve(__dirname, 'src'),
     extractPlugin = new miniCssExtractPlugin({
@@ -7,6 +9,18 @@ const path = require('path'),
         chunkFilename: 'styles-[hash].css',
         ignoreOrder: false
     });
+
+dotenv.config({path: `${__dirname}/.env`});
+
+const environmentVariables = new webpack.DefinePlugin({
+    'process.env': {
+        APIKEY: JSON.stringify(process.env.APIKEY),
+        APIBASEURL: JSON.stringify(process.env.APIBASEURL),
+        APIMOVESEARCHPATH: JSON.stringify(process.env.APIMOVESEARCHPATH),
+        APIMOVIEPOSTERBASE: JSON.stringify(process.env.APIMOVIEPOSTERBASE)
+    }
+});
+
 
 const config = {
     entry: `${srcDir}/index.js`,
@@ -36,7 +50,7 @@ const config = {
             }
         ]
     },
-    plugins: [extractPlugin]
+    plugins: [extractPlugin, environmentVariables]
 };
 
 module.exports = config;
