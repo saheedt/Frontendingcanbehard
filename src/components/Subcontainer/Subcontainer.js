@@ -8,7 +8,7 @@ const Subcontainer = ({wrapper, title, children, style}) => {
     return (
         <selectedWrapper.type className="sub-container" style={style}>
             <header className="sub-container-header">
-                <h1><span>{title}</span></h1>
+                <h2><span>{title}</span></h2>
             </header>
             <div className="sub-container-child">
                 {children}

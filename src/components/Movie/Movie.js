@@ -16,17 +16,15 @@ const Movie = ({title, overview, year, posterPath, getPoster}) => {
     const movieYear = year.split('-')[0];
 
     return (
-        <div className="movie-container shadow">
+        <article className="movie-container shadow">
             <div className="movie-poster-holder">
-                <figure>
-                    <img id="poster-canvas" className="movie-poster" src={poster.src} alt={title} />
-                </figure>
+                <img id="poster-canvas" className="movie-poster" src={poster.src} alt={`${title} poster`} />
             </div>
             <div className="movie-details-holder">
-                <h2>{title} - {movieYear}</h2>
-                <p>{overview}</p>{/**className="movie-summary" */}
+                <h3>{title} - {movieYear}</h3>
+                <p>{overview}</p>
             </div>
-        </div>
+        </article>
     );
 };
 

@@ -4,19 +4,33 @@ import Input from '../Input/Input';
 import Button from '../Button/Button';
 const Search = ({fetchMovie}) => {
     const [searchValue, setSearchValue] = useState('');
+    const baseUrl = process.env.APIBASEURL;
+    const apiKey = process.env.APIKEY;
+    const urlSearchPath = process.env.APIMOVESEARCHPATH;
+
+    const onSubmit = (event) => {
+        event.preventDefault();
+        const isUserTriggered = true;
+        fetchMovie(baseUrl, urlSearchPath, apiKey, searchValue, isUserTriggered);
+    };
 
     return(
-        <div className="search-container">
+        <form className="search-container" onSubmit={onSubmit}>
             <div className="search-input-holder">
                 <Input
                     placeholder={"Search Movies"}
+                    label={"Search Movies"}
                     getValue={(value)=>{setSearchValue(value)}}
                 />
-                </div>
+            </div>
             <div className="search-button-holder">
-                <Button title="search" clickHandler={fetchMovie} query={searchValue}/>
-                </div>
-        </div>
+                <Input
+                    placeholder="Search"
+                    label="Search Button"
+                    type="submit"
+                />
+            </div>
+        </form>
     );
 };
 
