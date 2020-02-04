@@ -13,7 +13,7 @@ const Movie = ({title, overview, year, posterPath, getPoster}) => {
                 console.error(error);
             })
     },[posterPath]);
-    const movieYear = year.split('-')[0];
+    const movieYear = (year && year.split('-')[0]) || "NIL";
 
     return (
         <article className="movie-container shadow">

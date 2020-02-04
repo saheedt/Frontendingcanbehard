@@ -51,10 +51,12 @@ const Home = () => {
     };
 
     useEffect(()=>{
+        const movieList = ['Black gold', 'Police', 'Summer', 'Matrix', 'Bad boys'];
         const baseUrl = process.env.APIBASEURL;
         const urlSearchPath = process.env.APIMOVESEARCHPATH;
         const apiKey = process.env.APIKEY;
-        const initialQuery = 'Black gold';
+        const atRandom = Math.floor(Math.random() * movieList.length);
+        const initialQuery = movieList[atRandom];
         const isUserTriggered = false;
         fetchMovie(baseUrl, urlSearchPath, apiKey, initialQuery, isUserTriggered);
     }, []);
