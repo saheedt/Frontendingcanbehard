@@ -6,6 +6,9 @@ In this project I tried to achieve the following:
 * Usage of Semantic HTML
 * Making the application as accessible as possible.
 
+## Deployed Application
+* [frontendingcanbehard](https://frontendingcanbehard.herokuapp.com/)
+
 ## Installation
 
 * To run this app, you need to first install it's dependencies by running the command: ``` npm install ```  from the app root directory.
